@@ -498,12 +498,8 @@ function overwriteProxyGroups(params) {
         HK: "(香港|HK|Hong|🇭🇰)",
         TW: "(台湾|TW|Taiwan|Wan|🇹🇼|🇨🇳)",
         SG: "(新加坡|狮城|SG|Singapore|🇸🇬)",
-        JP: "(日本|JP|Japan|🇯🇵)",
-        KR: "(韩国|韓|KR|Korea|🇰🇷)",
         US: "(美国|US|United States|America|🇺🇸)",
-        UK: "(英国|UK|United Kingdom|🇬🇧)",
-        FR: "(法国|FR|France|🇫🇷)",
-        DE: "(德国|DE|Germany|🇩🇪)"
+        NL: "(荷兰|NL|Netherlands|🇳🇱)"
     };
     // 合并所有国家关键词，供"其它"条件使用
     const allCountryTerms = Object.values(includeTerms).join("|");
@@ -512,12 +508,8 @@ function overwriteProxyGroups(params) {
         { name: "HK - 自动选择", regex: new RegExp(`^(?=.*${includeTerms.HK})(?!.*${excludeTerms}).*$`, "i") },
         { name: "TW - 自动选择", regex: new RegExp(`^(?=.*${includeTerms.TW})(?!.*${excludeTerms}).*$`, "i") },
         { name: "SG - 自动选择", regex: new RegExp(`^(?=.*${includeTerms.SG})(?!.*${excludeTerms}).*$`, "i") },
-        { name: "JP - 自动选择", regex: new RegExp(`^(?=.*${includeTerms.JP})(?!.*${excludeTerms}).*$`, "i") },
-        { name: "KR - 自动选择", regex: new RegExp(`^(?=.*${includeTerms.KR})(?!.*${excludeTerms}).*$`, "i") },
         { name: "US - 自动选择", regex: new RegExp(`^(?=.*${includeTerms.US})(?!.*${excludeTerms}).*$`, "i") },
-        { name: "UK - 自动选择", regex: new RegExp(`^(?=.*${includeTerms.UK})(?!.*${excludeTerms}).*$`, "i") },
-        { name: "FR - 自动选择", regex: new RegExp(`^(?=.*${includeTerms.FR})(?!.*${excludeTerms}).*$`, "i") },
-        { name: "DE - 自动选择", regex: new RegExp(`^(?=.*${includeTerms.DE})(?!.*${excludeTerms}).*$`, "i") },
+        { name: "NL - 自动选择", regex: new RegExp(`^(?=.*${includeTerms.NL})(?!.*${excludeTerms}).*$`, "i") },
         {
             name: "其它 - 自动选择",
             regex: new RegExp(`^(?!.*(?:${allCountryTerms}|${excludeTerms})).*$`, "i")
@@ -544,16 +536,6 @@ function overwriteProxyGroups(params) {
             icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png"
         },
         {
-            name: "JP - 手动选择",
-            regex: new RegExp(`^(?=.*${includeTerms.JP})(?!.*${excludeTerms}).*$`, "i"),
-            icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png"
-        },
-        {
-            name: "KR - 手动选择",
-            regex: new RegExp(`^(?=.*${includeTerms.KR})(?!.*${excludeTerms}).*$`, "i"),
-            icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png"
-        },
-        {
             name: "SG - 手动选择",
             regex: new RegExp(`^(?=.*${includeTerms.SG})(?!.*${excludeTerms}).*$`, "i"),
             icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png"
@@ -564,19 +546,9 @@ function overwriteProxyGroups(params) {
             icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png"
         },
         {
-            name: "UK - 手动选择",
-            regex: new RegExp(`^(?=.*${includeTerms.UK})(?!.*${excludeTerms}).*$`, "i"),
-            icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/UK.png"
-        },
-        {
-            name: "FR - 手动选择",
-            regex: new RegExp(`^(?=.*${includeTerms.FR})(?!.*${excludeTerms}).*$`, "i"),
-            icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/FR.png"
-        },
-        {
-            name: "DE - 手动选择",
-            regex: new RegExp(`^(?=.*${includeTerms.DE})(?!.*${excludeTerms}).*$`, "i"),
-            icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/DE.png"
+            name: "NL - 手动选择",
+            regex: new RegExp(`^(?=.*${includeTerms.NL})(?!.*${excludeTerms}).*$`, "i"),
+            icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/nio.png"
         },
         {
             name: "TW - 手动选择",
@@ -620,7 +592,7 @@ function overwriteProxyGroups(params) {
             name: "手动选择",
             type: "select",
             icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Cylink.png",
-            proxies: ["HK - 手动选择", "JP - 手动选择", "KR - 手动选择", "SG - 手动选择", "US - 手动选择", "UK - 手动选择", "FR - 手动选择", "DE - 手动选择", "TW - 手动选择"],
+            proxies: ["HK - 手动选择", "SG - 手动选择", "US - 手动选择", "NL - 手动选择", "TW - 手动选择"],
         },
         {
             name: "自动选择",
@@ -649,31 +621,38 @@ function overwriteProxyGroups(params) {
         {
             name: "✈️ 电报信息",
             type: "select",
-            proxies: ["🎯 节点选择", "HK - 自动选择", "JP - 自动选择", "KR - 自动选择", "SG - 自动选择", "US - 自动选择", "UK - 自动选择", "FR - 自动选择", "DE - 自动选择", "TW - 自动选择", "其它 - 自动选择"],
+            proxies: ["🎯 节点选择", "HK - 自动选择", "SG - 自动选择", "US - 自动选择", "NL - 自动选择", "TW - 自动选择", "其它 - 自动选择"],
             // "include-all": true,
             icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Telegram.png"
         },
         {
             name: "🤖 AIGC",
             type: "select",
-            proxies: ["US - 自动选择", "🎯 节点选择", "HK - 自动选择", "JP - 自动选择", "KR - 自动选择", "SG - 自动选择", "UK - 自动选择", "FR - 自动选择", "DE - 自动选择", "TW - 自动选择", "其它 - 自动选择"],
+            proxies: ["US - 自动选择", "🎯 节点选择", "HK - 自动选择", "SG - 自动选择", "NL - 自动选择", "TW - 自动选择", "其它 - 自动选择"],
             // "include-all": true,
             icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png"
         },
         {
             name: "🍎 苹果服务",
             type: "select",
-            proxies: ["DIRECT", "🎯 节点选择", "HK - 自动选择", "JP - 自动选择", "KR - 自动选择", "SG - 自动选择", "US - 自动选择", "UK - 自动选择", "FR - 自动选择", "DE - 自动选择", "TW - 自动选择", "其它 - 自动选择"],
+            proxies: ["DIRECT", "🎯 节点选择", "HK - 自动选择", "SG - 自动选择", "US - 自动选择", "NL - 自动选择", "TW - 自动选择", "其它 - 自动选择"],
             // "include-all": true,
             icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Apple.png"
         },
         {
             name: "Ⓜ️ 微软服务",
             type: "select",
-            proxies: ["DIRECT", "🎯 节点选择", "HK - 自动选择", "JP - 自动选择", "KR - 自动选择", "SG - 自动选择", "US - 自动选择", "UK - 自动选择", "FR - 自动选择", "DE - 自动选择", "TW - 自动选择", "其它 - 自动选择"],
+            proxies: ["DIRECT", "🎯 节点选择", "HK - 自动选择", "SG - 自动选择", "US - 自动选择", "NL - 自动选择", "TW - 自动选择", "其它 - 自动选择"],
             // "include-all": true,
             icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Microsoft.png"
         },
+        {
+            name: "🏠 家庭网络",
+            type: "select",
+            proxies: ["DIRECT", "TW - 自动选择", "TW - 手动选择"],
+            // "include-all": true,
+            icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/ithome.png"
+        }
     ];
 
     autoProxyGroups.length &&
@@ -726,6 +705,7 @@ function overwriteRules(params) {
         "RULE-SET,reject_ip,REJECT",
         "RULE-SET,telegram_ip,✈️ 电报信息",
         "RULE-SET,stream_ip,US - 自动选择",
+        "IP-CIDR,10.10.0.0/24,🏠 家庭网络",
         "RULE-SET,lan_ip,DIRECT",
         "RULE-SET,domestic_ip,DIRECT",
         "RULE-SET,china_ip,DIRECT",
