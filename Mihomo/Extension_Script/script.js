@@ -652,6 +652,26 @@ function overwriteProxyGroups(params) {
             proxies: ["DIRECT", "TW - 自动选择", "TW - 手动选择"],
             // "include-all": true,
             icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/ithome.png"
+        },
+        // 增加DIRECT分组
+        {
+            name: "🚁 DIRECT",
+            type: "select",
+            proxies: ["DIRECT", "🏠 家庭网络"],
+            icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/10000.png"
+        },
+        // 增加国内媒体、娱乐分组
+        {
+            name: "🎬 国内媒体",
+            type: "select",
+            proxies: ["DIRECT", "🏠 家庭网络"],
+            icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/videoqq.png"
+        },
+        {
+            name: "🎮 国内娱乐",
+            type: "select",
+            proxies: ["DIRECT", "🏠 家庭网络"],
+            icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/GAME.png"
         }
     ];
 
@@ -673,7 +693,13 @@ function overwriteRules(params) {
 
     const customRules = [
         // 在此添加自定义规则，优先级次于ad。例子：
-        // "DOMAIN,baidu.com,DIRECT",
+        // "DOMAIN,sub.store,🏠 家庭网络",
+        "IP-CIDR,10.10.0.0/24,🏠 家庭网络",
+        "DOMAIN-SUFFIX,douyin.com,🎮 国内娱乐"
+        // "IP-ASN,136958,DIRECT",
+        // "IP-ASN,132203,🚁 DIRECT",
+        // "IP-ASN,139341,🚁 DIRECT",
+        // "IP-ASN,132203,🚁 DIRECT"
     ];
 
     const nonipRules = [
@@ -681,34 +707,38 @@ function overwriteRules(params) {
         "RULE-SET,cdn_non_ip,🎯 节点选择",
         "RULE-SET,stream_non_ip,US - 自动选择",
         "RULE-SET,telegram_non_ip,✈️ 电报信息",
-        "RULE-SET,apple_cdn,DIRECT",
+        "RULE-SET,apple_cdn,🚁 DIRECT",
         "RULE-SET,download_domainset,🎯 节点选择",
         "RULE-SET,download_non_ip,🎯 节点选择",
-        "RULE-SET,microsoft_cdn_non_ip,DIRECT",
-        "RULE-SET,apple_cn_non_ip,DIRECT",
+        "RULE-SET,microsoft_cdn_non_ip,🚁 DIRECT",
+        "RULE-SET,apple_cn_non_ip,🚁 DIRECT",
         "RULE-SET,apple_services,🍎 苹果服务",
         "RULE-SET,microsoft_non_ip,Ⓜ️ 微软服务",
         "RULE-SET,ai_non_ip,🤖 AIGC",
         "RULE-SET,global_non_ip,🎯 节点选择",
-        "RULE-SET,domestic_non_ip,DIRECT",
-        "RULE-SET,direct_non_ip,DIRECT",
-        "RULE-SET,lan_non_ip,DIRECT"
+        "RULE-SET,bilibili,🎬 国内媒体",
+        "RULE-SET,douyin,🎮 国内娱乐",
+        "RULE-SET,blizzard,🎮 国内娱乐",
+        "RULE-SET,steam,🎮 国内娱乐",
+        "RULE-SET,netease,🎮 国内娱乐",
+        "RULE-SET,domestic_non_ip,🚁 DIRECT",
+        "RULE-SET,direct_non_ip,🚁 DIRECT",
+        "RULE-SET,lan_non_ip,🚁 DIRECT"
     ];
 
     const allNonipRules = [
         ...adNonipRules,
         ...customRules,
-        ...nonipRules
+        ...nonipRules,
     ];
 
     const ipRules = [
         "RULE-SET,reject_ip,REJECT",
         "RULE-SET,telegram_ip,✈️ 电报信息",
         "RULE-SET,stream_ip,US - 自动选择",
-        "IP-CIDR,10.10.0.0/24,🏠 家庭网络",
-        "RULE-SET,lan_ip,DIRECT",
-        "RULE-SET,domestic_ip,DIRECT",
-        "RULE-SET,china_ip,DIRECT",
+        "RULE-SET,lan_ip,🚁 DIRECT",
+        "RULE-SET,domestic_ip,🚁 DIRECT",
+        "RULE-SET,china_ip,🚁 DIRECT",
         "MATCH,🎯 节点选择"
     ];
 
@@ -762,6 +792,52 @@ function overwriteRules(params) {
             behavior: "classical",
             url: "https://ruleset.skk.moe/Clash/ip/reject.txt",
             path: "./rule_set/sukkaw_ruleset/reject_ip.txt",
+            interval: 43200,
+            format: "text",
+            proxy: "🎯 节点选择"
+        },
+        // 设置B站、抖音、暴雪、Steam、网易域名list
+        bilibili: {
+            type: "http",
+            behavior: "classical",
+            url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBili/BiliBili.list",
+            path: "./rule_set/sukkaw_ruleset/bilibili.txt",
+            interval: 43200,
+            format: "text",
+            proxy: "🎯 节点选择"
+        },
+        douyin: {
+            type: "http",
+            behavior: "classical",
+            url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/DouYin/DouYin.list",
+            path: "./rule_set/sukkaw_ruleset/douyin.txt",
+            interval: 43200,
+            format: "text",
+            proxy: "🎯 节点选择"
+        },
+        blizzard: {
+            type: "http",
+            behavior: "classical",
+            url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Blizzard/Blizzard.list",
+            path: "./rule_set/sukkaw_ruleset/blizzard.txt",
+            interval: 43200,
+            format: "text",
+            proxy: "🎯 节点选择"
+        },
+        steam: {
+            type: "http",
+            behavior: "classical",
+            url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.list",
+            path: "./rule_set/sukkaw_ruleset/steam.txt",
+            interval: 43200,
+            format: "text",
+            proxy: "🎯 节点选择"
+        },
+        netease: {
+            type: "http",
+            behavior: "classical",
+            url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/NetEase/NetEase.list",
+            path: "./rule_set/sukkaw_ruleset/netease.txt",
             interval: 43200,
             format: "text",
             proxy: "🎯 节点选择"
