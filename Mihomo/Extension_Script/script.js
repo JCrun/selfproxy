@@ -695,7 +695,7 @@ function overwriteRules(params) {
         // 在此添加自定义规则，优先级次于ad。例子：
         // "DOMAIN,sub.store,🏠 家庭网络",
         "IP-CIDR,10.10.0.0/24,🏠 家庭网络",
-        "DOMAIN-SUFFIX,douyin.com,🎮 国内娱乐"
+        "DOMAIN-SUFFIX,douyin.com,🎮 国内娱乐",
         // "IP-ASN,136958,DIRECT",
         // "IP-ASN,132203,🚁 DIRECT",
         // "IP-ASN,139341,🚁 DIRECT",
@@ -707,6 +707,7 @@ function overwriteRules(params) {
         "RULE-SET,cdn_non_ip,🎯 节点选择",
         "RULE-SET,stream_non_ip,US - 自动选择",
         "RULE-SET,telegram_non_ip,✈️ 电报信息",
+        "RULE-SET,pikpak,✈️ 电报信息",
         "RULE-SET,apple_cdn,🚁 DIRECT",
         "RULE-SET,download_domainset,🎯 节点选择",
         "RULE-SET,download_non_ip,🎯 节点选择",
@@ -1035,6 +1036,16 @@ function overwriteRules(params) {
             behavior: "ipcidr",
             url: "https://ruleset.skk.moe/Clash/ip/china_ip.txt",
             path: "./rule_set/sukkaw_ruleset/china_ip.txt",
+            interval: 43200,
+            format: "text",
+            proxy: "🎯 节点选择"
+        },
+        // https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PikPak/PikPak.list
+        pikpak: {
+            type: "http",
+            behavior: "classical",
+            url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PikPak/PikPak.list",
+            path: "./rule_set/sukkaw_ruleset/pikpak.txt",
             interval: 43200,
             format: "text",
             proxy: "🎯 节点选择"
